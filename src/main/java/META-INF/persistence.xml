@@ -5,7 +5,6 @@
 		<class>com.cs499.model.Gym</class>
 		<class>com.cs499.model.Member</class>
 		<class>com.cs499.model.LoyaltyStatus</class>
-		<class>com.cs499.model.MembersActivity</class>
 		<class>com.cs499.model.Reward</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

@@ -14,8 +14,8 @@ public class Discount extends Reward {
     private int discountAmount;
     private boolean claim;
 
-    public Discount(String name, int discountAmount) {
-        super(name);
+    public Discount(String name, String desc, int discountAmount) {
+        super(name, desc);
         this.discountAmount = discountAmount;
         claim = false;
     }

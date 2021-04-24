@@ -10,13 +10,14 @@ package com.cs499.model;
  * @author Dang
  */
 public class GiftCard extends Reward {
+	
     private int amount;
-    private int giftcardID;
+    private int giftcardId;
     
-    public GiftCard(String name, int amount, int giftcardID) {
-        super(name);
+    public GiftCard(String name, String desc, int amount, int giftcardId) {
+        super(name, desc);
         this.amount = amount;
-        this.giftcardID = giftcardID;
+        this.giftcardId = giftcardId;
     }   
 
     public int getAmount() {
@@ -26,4 +27,10 @@ public class GiftCard extends Reward {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+	@Override
+	public String toString() {
+		return "GiftCard [amount=" + amount + ", giftcardId=" + giftcardId + "]";
+	}
+        
 }

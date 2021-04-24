@@ -30,7 +30,7 @@ public class MemberController {
 		return memberRepo.getOne(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	public Member create(@RequestBody final Member member) {
 		return memberRepo.saveAndFlush(member);
 	}

@@ -12,6 +12,7 @@ import java.security.Timestamp;
  * @author Dang
  */
 public class PointNotification {
+	
     private int numNotify;
     private String notifyMessage;
     private Timestamp notifyTimestamp;
@@ -45,4 +46,11 @@ public class PointNotification {
     public void setNotifyTimestamp(Timestamp notifyTimestamp) {
         this.notifyTimestamp = notifyTimestamp;
     }
+
+	@Override
+	public String toString() {
+		return "PointNotification [numNotify=" + numNotify + ", notifyMessage=" + notifyMessage + ", notifyTimestamp="
+				+ notifyTimestamp + "]";
+	}
+    
 }

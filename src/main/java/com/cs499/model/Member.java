@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Anis, Dang
+ * @author Anis
  *         
  */
 @Entity
@@ -33,19 +33,19 @@ public class Member {
     
     @Id
     @GeneratedValue
-    private Long memberID;
+    private Long memberId;
 
     @ManyToOne
     private Gym gym;
 
-    public Member(String username, String password, String fName, String lName, String email, String phoneNumber, Long uniqueID) {
+    public Member(String username, String password, String fName, String lName, String email, String phoneNumber, Long uniqueId) {
         this.username = username;
         this.password = password;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.memberID = uniqueID;
+        this.memberId = uniqueId;
         loyaltyStatus = new LoyaltyStatus();
     }
 
@@ -56,7 +56,6 @@ public class Member {
         this.lName = "";
         this.email = "";
         this.phoneNumber = "";
-        this.memberID = (long) 0;
         loyaltyStatus = new LoyaltyStatus();
     }
 
@@ -75,6 +74,10 @@ public class Member {
     public String getLastName() {
         return lName;
     }
+    
+    public String getFullName() {
+        return fName + " " + lName;
+    }
 
     public String getEmail() {
         return email;
@@ -85,7 +88,7 @@ public class Member {
     }
 
     public Long getUniqueID() {
-        return memberID;
+        return memberId;
     }
 
     public void setEmail(String email) {
@@ -105,7 +108,7 @@ public class Member {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", loyaltyStatus=" + loyaltyStatus +
-                ", uniqueID=" + memberID +
+                ", uniqueID=" + memberId +
                 ", gym=" + gym +
                 '}';
     }

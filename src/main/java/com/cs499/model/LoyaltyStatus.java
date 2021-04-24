@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Dang
+ * @author Anis
  */
 @Entity
 @Table(name = "loyaltystatus")
@@ -43,9 +43,6 @@ public class LoyaltyStatus {
     private int currentTier;
 
     @OneToOne
-    private MembersActivity memberActivity;
-
-    @OneToOne
     private Member member;
     
     @Id
@@ -54,7 +51,6 @@ public class LoyaltyStatus {
 
     public LoyaltyStatus() {
         rewardsAvailable = new ArrayList<Reward>();
-        memberActivity = new MembersActivity();
         totalPoints = 0;
         currentTier = BRONZE;
     }
@@ -78,4 +74,11 @@ public class LoyaltyStatus {
     public int getCurrentTier() {
         return currentTier;
     }
+
+	@Override
+	public String toString() {
+		return "LoyaltyStatus [totalPoints=" + totalPoints + ", rewardsAvailable=" + rewardsAvailable + ", currentTier="
+				+ currentTier + ", member=" + member + ", loyaltyStatusID=" + loyaltyStatusID + "]";
+	}
+        
 }

@@ -9,29 +9,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author Dang
+ * @author Anis
  */
 @Entity
 @Table(name="reward")
 public class Reward {
     
-    @ManyToOne
-    private LoyaltyStatus loyalty;
+	private String name;
+	private String description;
     
     @Id
     @GeneratedValue
-    private Long rewardID;
-    private String name;
-    
-    public Reward(String name) {
+    private Long rewardId;
+      
+    public Reward(String name, String desc) {
         this.name = name;
+        this.description = desc;
     }
 
     public Reward() {
-
+    	this.name = "";
+    	this.description = "";
     }
+
+	@Override
+	public String toString() {
+		return "Reward [name=" + name + ", description=" + description + ", rewardId=" + rewardId + "]";
+	}
+        
 }

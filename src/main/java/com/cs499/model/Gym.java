@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Anis, Dang
+ * @author Anis
  *        
  */
 @Entity
@@ -30,20 +30,19 @@ public class Gym {
     
     @Id
     @GeneratedValue
-    private Long gymID;
+    private Long gymId;
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "gym_members",
-            joinColumns = @JoinColumn(name = "gymID"),
-            inverseJoinColumns = @JoinColumn(name = "memberID"))
+            joinColumns = @JoinColumn(name = "gymId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     private List<Member> members;
-    private Period contractPeriod;
+    
     private String contactInformation;
 
-    public Gym(List<Member> members, Period contractPeriod, String contactInformation) {
+    public Gym(List<Member> members, String contactInformation) {
         this.members = new ArrayList<>();
-        this.contractPeriod = contractPeriod;
         this.contactInformation = contactInformation;
     }
 
@@ -52,19 +51,12 @@ public class Gym {
         this.contactInformation = "";
     }
 
-    /** Add member to members
-     *
-     */
     public void addMember(Member newMember) {
     	members.add(newMember);
     }
 
     public List<Member> getMembers() {
         return members;
-    }
-
-    public Period getContractPeriod() {
-        return contractPeriod;
     }
 
     public String getContactInformation() {
@@ -75,13 +67,13 @@ public class Gym {
         this.members = members;
     }
 
-    public void setContractPeriod(Period contractPeriod) {
-        this.contractPeriod = contractPeriod;
-    }
-
     public void setContactInformation(String contactInformation) {
         this.contactInformation = contactInformation;
     }
-    
-    
+
+	@Override
+	public String toString() {
+		return "Gym [gymId=" + gymId + ", members=" + members + ", contactInformation=" + contactInformation + "]";
+	}
+            
 }
