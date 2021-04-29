@@ -32,7 +32,7 @@ public class Gym {
     @GeneratedValue
     private Long gymId;
     
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "gym_members",
             joinColumns = @JoinColumn(name = "gymId"),
@@ -41,7 +41,7 @@ public class Gym {
     
     private String contactInformation;
 
-    public Gym(List<Member> members, String contactInformation) {
+    public Gym(String contactInformation) {
         this.members = new ArrayList<>();
         this.contactInformation = contactInformation;
     }

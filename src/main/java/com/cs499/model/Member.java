@@ -5,6 +5,7 @@
  */
 package com.cs499.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,12 +24,14 @@ public class Member {
 
     private String username;
     private String password;
-    private String fName;
-    private String lName;
+    private String firstName;
+    private String lastName;
     private String email;
     private String phoneNumber;
     
-    @OneToOne
+    @OneToOne(
+    	    orphanRemoval = true,
+    	    cascade = CascadeType.ALL)
     private LoyaltyStatus loyaltyStatus;
     
     @Id
@@ -38,22 +41,21 @@ public class Member {
     @ManyToOne
     private Gym gym;
 
-    public Member(String username, String password, String fName, String lName, String email, String phoneNumber, Long uniqueId) {
+    public Member(String username, String password, String fName, String lName, String email, String phoneNumber) {
         this.username = username;
         this.password = password;
-        this.fName = fName;
-        this.lName = lName;
+        this.firstName = fName;
+        this.lastName = lName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.memberId = uniqueId;
         loyaltyStatus = new LoyaltyStatus();
     }
 
     public Member() {
     	this.username = "";
         this.password = "";
-        this.fName = "";
-        this.lName = "";
+        this.firstName = "";
+        this.lastName = "";
         this.email = "";
         this.phoneNumber = "";
         loyaltyStatus = new LoyaltyStatus();
@@ -68,15 +70,15 @@ public class Member {
     }
 
     public String getFirstName() {
-        return fName;
+        return firstName;
     }
     
     public String getLastName() {
-        return lName;
+        return lastName;
     }
     
     public String getFullName() {
-        return fName + " " + lName;
+        return firstName + " " + lastName;
     }
 
     public String getEmail() {
@@ -104,7 +106,7 @@ public class Member {
         return "GymMember{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + fName + " " + lName + '\'' +
+                ", name='" + firstName + " " + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", loyaltyStatus=" + loyaltyStatus +
