@@ -106,11 +106,7 @@ public class Member {
     public void setGym(Gym gym) {
     	this.gym = gym;
     }
-
-    public Gym getGym() {
-		return gym;
-	}
-    
+ 
     public void addPoints(int points) {
     	loyaltyStatus.addTotalPoints(points);
     }

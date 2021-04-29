@@ -92,7 +92,7 @@ public class LoyaltyStatus {
         	}
         
         
-        totalPoints = 0;
+        totalPoints = totalPoints - 500;
         currentTier++;
         
         }//end if
@@ -112,8 +112,8 @@ public class LoyaltyStatus {
         return currentTier;
     }
     
-    public void addRewardsAvailable() {
-    	rewardsAvailable.add(new Reward("Super Bottle", "drinking bottle"));
+    public void addRewardsAvailable(String name, String description) {
+    	rewardsAvailable.add(new Reward(name, description));
     }
     
     public void redeemReward(int index) {
