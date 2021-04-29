@@ -1,8 +1,7 @@
 package com.cs499.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +19,8 @@ public class GymService {
 		return gymRepo.findAll();
 	}
 
-	public Gym getGym(Long id) {
-		return gymRepo.getOne(id);
+	public Optional<Gym> getGym(Long id) {
+		return gymRepo.findById(id);
 	}
 
 	public void addGym(Gym gym) {

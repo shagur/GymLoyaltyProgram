@@ -1,6 +1,7 @@
 package com.cs499.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cs499.model.Gym;
-import com.cs499.repositories.GymRepo;
 import com.cs499.service.GymService;
 
 @RestController
@@ -29,7 +29,7 @@ public class GymController {
 	}
 	
 	@GetMapping("/{id}")
-	public Gym getGym(@PathVariable Long id) {
+	public Optional<Gym> getGym(@PathVariable Long id) {
 		return gymService.getGym(id);
 	}
 	

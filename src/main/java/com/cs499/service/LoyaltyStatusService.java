@@ -1,6 +1,7 @@
 package com.cs499.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class LoyaltyStatusService {
 		return loyaltyStatusRepo.findAll();
 	}
 
-	public LoyaltyStatus getLoyaltyStatus(Long id) {
-		return loyaltyStatusRepo.getOne(id);
+	public Optional<LoyaltyStatus> getLoyaltyStatus(Long id) {
+		return loyaltyStatusRepo.findById(id);
 	}
 
 	public void addLoyaltyStatus(LoyaltyStatus loyaltyStatus) {

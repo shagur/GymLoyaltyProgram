@@ -1,6 +1,7 @@
 package com.cs499.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class RewardService {
 		return rewardRepo.findAll();
 	}
 
-	public Reward getReward(Long id) {
-		return rewardRepo.getOne(id);
+	public Optional<Reward> getReward(Long id) {
+		return rewardRepo.findById(id);
 	}
 
 	public void addReward(Reward reward) {

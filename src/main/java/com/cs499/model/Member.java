@@ -5,6 +5,8 @@
  */
 package com.cs499.model;
 
+import java.util.Optional;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -100,8 +102,20 @@ public class Member {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
+    public void setGym(Gym gym) {
+    	this.gym = gym;
+    }
 
-    @Override
+    public Gym getGym() {
+		return gym;
+	}
+    
+    public void addPoints(int points) {
+    	loyaltyStatus.addTotalPoints(points);
+    }
+
+	@Override
     public String toString() {
         return "GymMember{" +
                 "username='" + username + '\'' +

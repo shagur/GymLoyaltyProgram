@@ -5,7 +5,6 @@
  */
 package com.cs499.model;
 
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +69,11 @@ public class Gym {
     public void setContactInformation(String contactInformation) {
         this.contactInformation = contactInformation;
     }
-
+    
+    public void removeMember(Member member) {
+    	members.remove(member);
+    }
+    
 	@Override
 	public String toString() {
 		return "Gym [gymId=" + gymId + ", members=" + members + ", contactInformation=" + contactInformation + "]";

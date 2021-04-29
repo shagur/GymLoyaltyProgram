@@ -8,9 +8,6 @@ package com.cs499.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,8 +29,20 @@ public class Reward {
         this.name = name;
         this.description = desc;
     }
+        
+    public String getDescription() {
+		return description;
+	}
 
-    public Reward() {
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Reward() {
     	this.name = "";
     	this.description = "";
     }

@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -70,13 +69,55 @@ public class LoyaltyStatus {
     public int getTotalPoints() {
         return totalPoints;
     }
-
+    
+    public void addTotalPoints(int num) {
+    	
+    	int prevPoints = this.totalPoints;
+        this.totalPoints += num;
+        
+        //auto redeem item when crossing 500 points and advance one tier
+        if(prevPoints < 500 && totalPoints >= 500) {
+        	
+        	switch(currentTier) {
+        	case BRONZE:
+        		rewardsAvailable.add(new Reward("Keychain", "gym brandkeychain"));
+        	case SILVER:
+        		rewardsAvailable.add(new Reward("Super Bottle", "shaker bottle"));
+        	case GOLD:
+        		rewardsAvailable.add(new Reward("T Shirt", "gym brand shirt"));
+        	case PLATINUM:
+        		rewardsAvailable.add(new Reward("Nike Basketball", "basketball"));
+        	case DIAMOND:
+        		rewardsAvailable.add(new Reward("Super Whey Protein", "2 lb protein supplement"));
+        	}
+        
+        
+        totalPoints = 0;
+        currentTier++;
+        
+        }//end if
+        
+        
+        //if diamond prize is redeemed revert back to bronze
+        if(currentTier > 4)
+        	currentTier = 0;
+        
+    }
+    
     public List<Reward> getRewardsAvailable() {
         return rewardsAvailable;
     }
 
     public int getCurrentTier() {
         return currentTier;
+    }
+    
+    public void addRewardsAvailable() {
+    	rewardsAvailable.add(new Reward("Super Bottle", "drinking bottle"));
+    }
+    
+    public void redeemReward(int index) {
+    	rewardsAvailable.remove(index);
     }
 
 	@Override

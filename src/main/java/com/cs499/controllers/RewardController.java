@@ -1,6 +1,7 @@
 package com.cs499.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +29,7 @@ public class RewardController {
 	}
 	
 	@GetMapping("/{id}")
-	public Reward getReward(@PathVariable Long id) {
+	public Optional<Reward> getReward(@PathVariable Long id) {
 		return rewardService.getReward(id);
 	}
 	

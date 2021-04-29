@@ -1,6 +1,7 @@
 package com.cs499.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class MemberService {
 		return memberRepo.findAll();
 	}
 
-	public Member getMember(Long id) {
-		return memberRepo.getOne(id);
+	public Optional<Member> getMember(Long id) {
+		return memberRepo.findById(id);
 	}
 
 	public void addMember(Member member) {
